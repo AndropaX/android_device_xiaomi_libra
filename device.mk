@@ -147,9 +147,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ExtraSettings
 
-# for off charging mode
-WITH_CM_CHARGER := false
-
 PRODUCT_PACKAGES += \
     charger_res_images \
     libhealthd.qcom
@@ -346,21 +343,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.mdpcomp_perfhint=50 \
     persist.sys.wfd.virtual=0 \
     ro.qualcomm.cabl=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.adb.secure=0 \
-    ro.secure=0 \
-    persist.sys.usb.config=mtp,adb \
-    persist.service.adb.enable=1 \
-    persist.service.debuggable=1
-
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.adb.secure=0 \
-    ro.secure=0 \
-    ro.allow.mock.location=1 \
-    persist.service.adb.enable=1 \
-    persist.service.debuggable=1 \
-    persist.sys.usb.config=mtp
 
 # Enable low power video mode for 4K encode
 PRODUCT_PROPERTY_OVERRIDES += \

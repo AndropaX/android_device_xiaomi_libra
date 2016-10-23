@@ -60,6 +60,9 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $
 NEED_KERNEL_MODULE_ROOT := true
 BOARD_CUSTOM_BOOTIMG_MK := device/xiaomi/libra/mkbootimg.mk
 
+# Off charging mode
+WITH_CM_CHARGER := false
+
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_libra
 TARGET_RECOVERY_DEVICE_MODULES := libinit_libra
