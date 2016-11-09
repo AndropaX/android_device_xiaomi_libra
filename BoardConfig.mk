@@ -59,7 +59,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $
 BOARD_CUSTOM_BOOTIMG_MK := device/xiaomi/libra/mkbootimg.mk
 
 # Off charging mode
-WITH_CM_CHARGER := false
+#WITH_CM_CHARGER := false
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_libra
@@ -237,5 +237,8 @@ ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
 
 # Configure jemalloc
 MALLOC_SVELTE := true
+
+# Use Snapdragon LLVM, if available
+TARGET_USE_SDCLANG := true
 
 -include vendor/xiaomi/libra/BoardConfigVendor.mk
