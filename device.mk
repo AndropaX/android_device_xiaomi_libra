@@ -403,6 +403,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # for perfd
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.am.reschedule_service=true \
     sys.io.scheduler=sio \
     ro.min_freq_0=302400 \
     ro.min_freq_4=302400
