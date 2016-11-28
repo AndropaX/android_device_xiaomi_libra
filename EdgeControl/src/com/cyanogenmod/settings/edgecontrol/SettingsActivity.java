@@ -1,4 +1,4 @@
-package com.cyanogenmod.settings.extra;
+package com.cyanogenmod.settings.edgecontrol;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

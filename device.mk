@@ -154,9 +154,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LibraDoze
 
-# ExtraSettings
+# EdgeControl
 PRODUCT_PACKAGES += \
-    ExtraSettings
+    EdgeControl
 
 PRODUCT_PACKAGES += \
     charger_res_images \
