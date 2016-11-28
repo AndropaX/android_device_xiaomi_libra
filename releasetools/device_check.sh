@@ -27,6 +27,6 @@ if [ $HW_ID == 0x230 ]; then
     rm -rf /system/etc/permissions/android.hardware.fingerprint.xml
     rm -rf /system/bin/fingerprintd
 else
-    # Remove Edge tap settings
-    rm -rf /system/app/ExtraSettings
+    # Remove Edge control settings
+    rm -rf /system/app/EdgeControl
 fi
