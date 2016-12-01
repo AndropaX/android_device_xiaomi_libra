@@ -90,8 +90,10 @@ write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 79000
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif 1
 write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 302400
 
-# restore A57's max
-copy /sys/devices/system/cpu/cpu4/cpufreq/cpuinfo_max_freq /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+# don't use oc by default
+write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1440000
+write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1824000
+write /sys/class/kgsl/kgsl-3d0/max_gpuclk 600000000
 
 # plugin remaining A57s
 write /sys/devices/system/cpu/cpu5/online 1
