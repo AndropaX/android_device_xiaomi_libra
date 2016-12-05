@@ -408,9 +408,6 @@
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
     <integer name="config_buttonBrightnessSettingDefault">153</integer>
 
-    <!-- HW keys prefs-->
-    <bool name="config_hwKeysPref">true</bool>
-
     <!-- Hardware keys keep back always on -->
     <bool name="config_hwKeysBackAlwaysOn">true</bool>
 
