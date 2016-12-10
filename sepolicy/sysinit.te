@@ -1,3 +1,5 @@
 # For touchscreen proc files
 allow sysinit proc_touchscreen:dir search;
 allow sysinit proc_touchscreen:file { write open };
+
+allow sysinit rootfs:lnk_file getattr;

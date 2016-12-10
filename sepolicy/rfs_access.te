@@ -1,1 +1,3 @@
 allow rfs_access debugfs_rmt_storage:dir search;
+
+allow rfs_access debugfs_rmt_storage:file { open write };
