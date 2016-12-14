@@ -9,3 +9,6 @@ allow untrusted_app sysfs:file { getattr open read };
 allow untrusted_app system_app_data_file:dir getattr;
 allow untrusted_app system_data_file:file { getattr read };
 allow untrusted_app untrusted_app:udp_socket ioctl;
+allow untrusted_app cm_status_bar_service:service_manager find;
+allow untrusted_app proc_iomem:file getattr;
+allow untrusted_app proc_sysrq:file getattr;

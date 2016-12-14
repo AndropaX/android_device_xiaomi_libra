@@ -12,4 +12,6 @@ allow sudaemon safemode_prop:file { getattr open };
 allow sudaemon mmc_prop:file { getattr open };
 allow sudaemon logpersistd_logging_prop:file { getattr open };
 allow sudaemon device_logging_prop:file { getattr open };
-allow sudaemon batterystats_service:service_manager { find };
+allow sudaemon batterystats_service:service_manager find;
+allow sudaemon alarm_service:service_manager find;
+allow sudaemon power_service:service_manager find;
