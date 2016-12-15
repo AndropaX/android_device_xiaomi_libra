@@ -1,0 +1,4 @@
+# This file gets copied as /init.qcom.diag.rc
+
+on boot
+    rm /dev/diag

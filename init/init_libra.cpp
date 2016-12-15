@@ -116,7 +116,7 @@ static void init_target_properties()
     std::string hardware;
 
     hardware = property_get("ro.hardware");
-    if (hardware != "libra")
+    if (hardware != "qcom")
         return;
 
     if (get_variant() == 0) {
