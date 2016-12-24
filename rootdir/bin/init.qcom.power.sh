@@ -62,7 +62,7 @@ write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "65 460800:7
 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 39000
 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 79000
 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 1
-write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 302000
+write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 302400
 
 # Make sure CPU 4 is only to configure big settings
 write /sys/devices/system/cpu/cpu4/online 1
@@ -82,7 +82,7 @@ write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "70 960000:8
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 39000
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 79000
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif 1
-write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 302000
+write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 302400
 
 # Don't use oc by default
 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1440000
