@@ -378,6 +378,11 @@
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
     <!--<integer name="config_doubleTapOnHomeBehavior">0</integer>--> <!-- TODO: Duplicated on line 353 -->
+    
+    <!-- TODO: Enables HW HOME as input for Now On Tap (or Search on screen)
+         This flag must be set to allow the use of Home hardware button for assistant on screen search.
+         Without, only software navigation bar enables Now on Tap behaviour -->
+    <bool name="config_hwKeysPref">true</bool>
 
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
