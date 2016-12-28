@@ -377,7 +377,7 @@
          This needs to match the constants in
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
-    <integer name="config_doubleTapOnHomeBehavior">0</integer>
+    <!--<integer name="config_doubleTapOnHomeBehavior">0</integer>--> <!-- TODO: Duplicated on line 353 -->
 
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
