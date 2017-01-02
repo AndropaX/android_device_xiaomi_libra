@@ -255,6 +255,10 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
+# IR
+PRODUCT_PACKAGES += \
+    consumerir.msm8992
+
 # Camera
 PRODUCT_PACKAGES += \
     Snap

@@ -700,10 +700,6 @@ vendor/lib64/libOpenCL.so
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
-# IRDA
-lib/hw/consumerir.msm8992.so
-lib64/hw/consumerir.msm8992.so
-
 # Keystore
 vendor/lib/hw/keystore.msm8992.so
 vendor/lib64/hw/keystore.msm8992.so
