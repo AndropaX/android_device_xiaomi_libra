@@ -154,10 +154,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     EdgeControl
 
-# GPS
-PRODUCT_PACKAGES += \
-    gps.msm8992
-
 PRODUCT_PACKAGES += \
     charger_res_images \
     libhealthd.qcom
