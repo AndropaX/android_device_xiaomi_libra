@@ -400,6 +400,10 @@
     <!-- Hardware keys keep back always on -->
     <bool name="config_hwKeysBackAlwaysOn">true</bool>
 
+    <!-- Support in Surfaceflinger for blur layers.
+           NOTE: This requires additional hardware-specific code. -->
+    <bool name="config_uiBlurEnabled">true</bool>
+
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/framework/arm64/boot-framework.oat"</item>
