@@ -9,6 +9,8 @@
 /dev/jpeg1                0660   system     camera
 /dev/jpeg2                0660   system     camera
 /dev/jpeg3                0660   system     camera
+/dev/adsprpc-smd          0664   system     system
+/dev/system_health_monitor 0640  radio      system
 /dev/rtc0                 0660   system     system
 /dev/diag                 0660   radio      radio
 /dev/ttyUSB0              0660   system     system
@@ -17,9 +19,15 @@
 /dev/smd7                 0660   bluetooth  bluetooth
 /dev/smd8                 0660   system     system
 /dev/smd_cxm_qmi          0640   radio      radio
+/dev/ccid_bridge          0660   system     system
+/dev/ipa                  0660   system     net_admin
+/dev/wwan_ioctl           0660   system     net_admin
+/dev/ipaNatTable          0660   net_admin  net_admin
 /dev/rmnet_ctrl           0660   usb        usb
 /dev/dpl_ctrl             0660   usb        usb
+
 #permissions for CSVT
+/dev/radio0               0640   system     system
 /dev/smd11                0660   system     system
 /dev/smd21                0660   system     system
 /dev/smd22                0660   system     system
@@ -65,9 +73,26 @@
 /dev/hsicctl15            0640   radio      radio
 /dev/hsicctl16            0640   radio      radio
 /dev/qseecom              0660   system     drmrpc
+
 # permissions for audio
+/dev/msm_aac              0660   system     audio
+/dev/msm_aac_in           0660   system     audio
+/dev/msm_amrnb            0660   system     audio
+/dev/msm_amrnb_in         0640   system     audio
+/dev/msm_amrwb            0660   system     audio
+/dev/msm_amrwbplus        0660   system     audio
 /dev/msm_audio_cal        0660   system     audio
+/dev/msm_evrc             0660   system     audio
+/dev/msm_evrc_in          0660   system     audio
+/dev/msm_hweffects        0660   system     audio
+/dev/msm_multi_aac        0660   system     audio
+/dev/msm_qcelp            0660   system     audio
+/dev/msm_qcelp_in         0660   system     audio
 /dev/msm_rtac             0660   system     audio
+/dev/msm_wma              0660   system     audio
+/dev/msm_wmapro           0660   system     audio
+/dev/voice_svc            0660   system     audio
+/dev/avtimer              0660   system     audio
 # SSR devices
 /dev/subsys_*             0640   system     system
 # WLAN RPS

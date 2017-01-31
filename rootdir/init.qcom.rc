@@ -66,8 +66,6 @@ on init
 
     write /proc/sys/vm/page-cluster 0
 
-    export LD_SHIM_LIBS "/system/vendor/bin/mm-qcamera-daemon|libshim_camera.so"
-
     # Update rootfs based on variant
     exec u:r:aqua:s0 root root -- /sbin/aqua -u
 
@@ -93,6 +91,11 @@ on early-boot
     # Update dm-verity state and set partition.*.verified properties
     verity_update_state
 
+    start select_sns_hal
+
+on post-fs
+    setprop ro.hardware.sensors lsm6db0
+
 on boot
     symlink /dev/block/platform/soc.0/f9824900.sdhci /dev/block/bootdevice
 
@@ -116,6 +119,9 @@ on boot
     write /dev/cpuset/system-background/cpus 0-2
     write /dev/cpuset/top-app/cpus 0-5
     write /dev/cpuset/camera-daemon/cpus 0-3
+
+    start rmt_storage
+    start rfs_access
 
     # adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
@@ -220,8 +226,9 @@ on boot
     chmod 0644 /sys/class/timed_output/vibrator/vtg_min
 
     # Torch
-    chown system system /sys/class/leds/led:torch_0/brightness
+    #chown system system /sys/class/leds/led:torch_0/brightness
     chmod 0666 /sys/class/leds/led:torch_0/brightness
+    chmod 0666 /sys/class/leds/led:torch_1/brightness
 
     # Graphics node permissions
     chmod 0664 /sys/class/graphics/fb0/dyn_pu
@@ -264,6 +271,28 @@ on post-fs-data
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
 
+    # Create the directories used by DPM subsystem
+    mkdir /data/dpm 0771 system system
+    chown system system /data/dpm
+
+    mkdir /data/dpm/fdMgr 0771 system system
+    chown system system /data/dpm/fdMgr
+
+    mkdir /data/dpm/nsrm 0771 system system
+    chown system system /data/dpm/nsrm
+
+    # Create directory for audio delta files
+    mkdir /data/misc/audio/acdbdata 0770 media audio
+    mkdir /data/misc/audio/acdbdata/delta 0770 media audio
+
+    # Create a folder for audio delta files
+    mkdir /data/audio/acdbdata 0770 media audio
+    mkdir /data/audio/acdbdata/delta 0770 media audio
+
+    # Create directory used by display clients
+    mkdir /data/misc/display 0770 system graphics
+    mkdir /persist/display 0770 system graphics
+
     # use qcril.db to handle Ecc and load MBN
     copy /system/etc/qcril.db /data/misc/radio/qcril.db
     chown radio radio /data/misc/radio/qcril.db
@@ -304,6 +333,10 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+service dpmd /system/bin/dpmd
+    class late_start
+    socket dpmd stream 660 root system
+
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -320,6 +353,10 @@ service rfs_access /system/bin/rfs_access
     user root
     group system net_raw wakelock
     writepid /dev/cpuset/system-background/tasks
+
+service tftp_server /system/bin/tftp_server
+    class core
+    user root
 
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
@@ -449,13 +486,13 @@ service loc_launcher /system/bin/loc_launcher
 service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
 
-service qseecomd /system/vendor/bin/qseecomd
+service qseecomd /system/bin/qseecomd
     class core
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service msm_irqbalance /system/bin/msm_irqbalance -f /system/etc/msm_irqbalance.conf
+service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     socket msm_irqbalance seqpacket 660 root system
     class core
     user root
@@ -467,6 +504,16 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
+
+service audiod /system/bin/audiod
+    class late_start
+    user system
+    group system
+
+service adsprpcd /system/bin/adsprpcd
+    class main
+    user media
+    group media
 
 service ril-daemon /system/bin/rild
     class main
@@ -492,7 +539,7 @@ service charger /sbin/healthd -c
     critical
     seclabel u:r:healthd:s0
 
-service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
@@ -536,14 +583,53 @@ service imsdatadaemon /system/bin/imsdatadaemon
     writepid /dev/cpuset/system-background/tasks
     disabled
 
+service select_sns_hal /system/vendor/bin/sensor_select.sh
+    class main
+    user root
+    group root
+    oneshot
+
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
+
+service ims_rtp_daemon /system/bin/ims_rtp_daemon
+    class main
+    user system
+    socket ims_rtpd stream 0660 system radio
+    group radio diag inet log
+    disabled
+
+on property:sys.ims.DATA_DAEMON_STATUS=1
+    start ims_rtp_daemon
 
 service imscmservice /system/bin/imscmservice
     class main
     user system
-    group radio net_raw diag log
+    group radio diag inet log
     writepid /dev/cpuset/system-background/tasks
+
+service ppd /system/bin/mm-pp-daemon
+    class late_start
+    user system
+    socket pps stream 0660 system system
+    group system graphics
+
+on property:init.svc.surfaceflinger=stopped
+    stop ppd
+
+service displayfeature /system/bin/displayfeature
+    class late_start
+    user root
+    group root
+
+on property:init.svc.surfaceflinger=stopped
+    stop displayfeature
+
+on property:init.svc.surfaceflinger=running
+    start displayfeature
+
+on property:init.svc.surfaceflinger=restarting
+    stop displayfeature
 
 service qcom-sh /system/bin/init.qcom.sh
     class late_start
@@ -569,3 +655,20 @@ service energy-awareness /system/bin/energy-awareness
     user root
     group system
     oneshot
+
+# adbd is controlled via property triggers in init.<platform>.usb.rc
+service adbd /sbin/adbd
+    class core
+    disabled
+
+# Always start adbd on userdebug and eng builds
+on property:ro.debuggable=1
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop service.adb.root 1
+
+# Restart adbd so it can run as root
+on property:service.adb.root=1
+    write /sys/class/android_usb/android0/enable 0
+    restart adbd
+    write /sys/class/android_usb/android0/enable 1
