@@ -32,6 +32,10 @@ static const char *aqua_line =
     "auto         auto    defaults    "
     "voldmanaged=sdcard1:auto,encryptable=userdata\n";
 
+static const char *twrp_line =
+    "/external_sd     vfat    /dev/block/mmcblk1p1                      "
+    "flags=removable;storage;display=Micro-SDcard\n";
+
 static int get_variant()
 {
     char buf[6];
@@ -79,6 +83,7 @@ int main(int argc, char **argv)
             if (i == 1) {
                 update_fstab("/fstab.qcom", aqua_line);
                 update_fstab("/etc/recovery.fstab", aqua_line);
+                update_fstab("/etc/twrp.fstab", twrp_line);
             } else {
                 KLOG_ERROR(LOG_TAG, "Only aqua variant need fstab update\n");
             }

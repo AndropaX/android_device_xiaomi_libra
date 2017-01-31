@@ -55,8 +55,8 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom boot_cpus=0-5
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 msm_poweroff.download_mode=0
 #BOARD_KERNEL_CMDLINE += synaptics_dsx.startup_fw_update=1
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_KERNEL_CMDLINE += cpu_max_a53=1632000 cpu_max_a57=2016000
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+#BOARD_KERNEL_CMDLINE += cpu_max_a53=1632000 cpu_max_a57=2016000
 
 #BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
@@ -251,5 +251,15 @@ MALLOC_SVELTE := true
 
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
+
+# TWRP
+#RECOVERY_VARIANT := twrp
+TW_THEME := portrait_hdpi
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_INCLUDE_CRYPTO := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TARGET_RECOVERY_QCOM_RTC_FIX := true
 
 -include vendor/xiaomi/libra/BoardConfigVendor.mk
