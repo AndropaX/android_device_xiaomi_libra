@@ -31,13 +31,20 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    device/xiaomi/libra/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    device/xiaomi/libra/audio/audio_output_policy.conf:system/etc/audio_output_policy.conf \
-    device/xiaomi/libra/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/xiaomi/libra/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/xiaomi/libra/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     device/xiaomi/libra/audio/surround_sound_rec_AZ.cfg:system/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg \
-    device/xiaomi/libra/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
+    device/xiaomi/libra/audio/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
+    device/xiaomi/libra/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
+    device/xiaomi/libra/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/xiaomi/libra/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/xiaomi/libra/audio/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
+    device/xiaomi/libra/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/xiaomi/libra/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    device/xiaomi/libra/audio/audio_policy_volumes.xml:system/etc/audio_policy_volumes.xml \
+    device/xiaomi/libra/audio/default_volume_tables.xml:system/etc/default_volume_tables.xml \
+    device/xiaomi/libra/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/xiaomi/libra/audio/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
+    device/xiaomi/libra/audio/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
+    device/xiaomi/libra/audio/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml
 
 #Sound Trigger
 PRODUCT_COPY_FILES += \
@@ -66,6 +73,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
@@ -108,13 +117,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/configs/thermal-engine-8992.conf:system/etc/thermal-engine-8992.conf
 
-# MSM IRQ balance
-PRODUCT_COPY_FILES += \
-    device/xiaomi/libra/configs/msm_irqbalance.conf:system/etc/msm_irqbalance.conf
-
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/releasetools/device_check.sh:install/bin/device_check.sh
-	
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -127,6 +131,7 @@ PRODUCT_PACKAGES += \
     init.qcom.ramdump.rc \
     init.qcom.rc \
     init.qcom.sh \
+    sensor_select.sh \
     init.qcom.usb.rc \
     ueventd.qcom.rc
 
@@ -184,28 +189,27 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxQcelp13Enc
 
-# Audio HAL and utilities
+# Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm8992 \
+    audiod \
     audio.a2dp.default \
-    audio.usb.default \
+    audio.primary.msm8992 \
     audio.r_submix.default \
-    audio_policy.msm8992 \
-    audio_amplifier.msm8992
+    audio.usb.default \
+    libaudio-resampler \
+    libaudioroute \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libqcomvoiceprocessingdescriptors \
+    libtinycompress \
+    tinymix
 
 # some extra tools
 PRODUCT_PACKAGES += \
     tinycap \
-    tinymix \
     tinypcminfo \
     tinyplay
-
-# Audio effects
-PRODUCT_PACKAGES += \
-    libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors \
-    libqcomvisualizer \
-    libqcompostprocbundle
 
 PRODUCT_PACKAGES += \
     librmnetctl \
@@ -214,17 +218,22 @@ PRODUCT_PACKAGES += \
     libxml2 \
     libprotobuf-cpp-full
 
-# GPS configuration
+# Display
 PRODUCT_COPY_FILES += \
-    device/xiaomi/libra/gps/etc/flp.conf:system/etc/flp.conf \
-    device/xiaomi/libra/gps/etc/gps.conf:system/etc/gps.conf \
-    device/xiaomi/libra/gps/etc/izat.conf:system/etc/izat.conf \
-    device/xiaomi/libra/gps/etc/lowi.conf:system/etc/lowi.conf \
-    device/xiaomi/libra/gps/etc/sap.conf:system/etc/sap.conf \
-    device/xiaomi/libra/gps/etc/xtwifi.conf:system/etc/xtwifi.conf
+    device/xiaomi/libra/configs/calib.cfg:system/etc/calib.cfg
+
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8992 \
+    libcurl
 
 PRODUCT_PACKAGES += \
-    gps.msm8992
+    flp.conf \
+    gps.conf \
+    izat.conf \
+    lowi.conf \
+    sap.conf \
+    xtwifi.conf
 
 # Fingerprint Sensor
 PRODUCT_PACKAGES += \
@@ -247,12 +256,6 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8992 \
-    libcamera \
-    libmmcamera_interface \
-    libmmcamera_interface2 \
-    libmmjpeg_interface \
-    libqomx_core \
-    mm-qcamera-app \
     Snap
 
 # Snap Config
@@ -271,10 +274,6 @@ PRODUCT_COPY_FILES += \
 # Build stlport for legacy blobs
 PRODUCT_PACKAGES += \
     libstlport
-
-# Legacy blob symbols
-PRODUCT_PACKAGES += \
-    libshim_camera
 
 PRODUCT_PACKAGES += \
     libboringssl-compat
