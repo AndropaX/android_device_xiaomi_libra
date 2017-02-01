@@ -48,6 +48,7 @@ vendor/lib/libaudcal.so
 vendor/lib/libaudioalsa.so
 vendor/lib/libdrc.so
 vendor/lib/libqct_resampler.so
+vendor/lib/libsurround_3mic_proc.so
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbmapper.so
@@ -590,17 +591,44 @@ vendor/lib64/libdpmtcm.so
 
 # DRM
 bin/qseecomd
+vendor/bin/sampleauthdaemon
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
+vendor/lib/libpvr.so
 vendor/lib/libQSEEComAPI.so
+vendor/lib/librmp.so
 vendor/lib/librpmb.so
+vendor/lib/libSampleAuthJNI.so
+vendor/lib/lib-sec-disp.so
+vendor/lib/libSecureSampleAuthClient.so
+vendor/lib/libSecureSampleAuthJNI.so
+vendor/lib/libSecureUILib.so
+vendor/lib/libsecureui.so
+vendor/lib/libsecureuisvc_jni.so
+vendor/lib/libsecureui_svcsock.so
+vendor/lib/libsi.so
 vendor/lib/libssd.so
+vendor/lib/libStDrvInt.so
+vendor/lib/libtzdrmgenprov.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
+vendor/lib64/libpvr.so
+vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
+vendor/lib64/libSampleAuthJNI.so
+vendor/lib64/lib-sec-disp.so
+vendor/lib64/libSecureSampleAuthClient.so
+vendor/lib64/libSecureSampleAuthJNI.so
+vendor/lib64/libSecureUILib.so
+vendor/lib64/libsecureui.so
+vendor/lib64/libsecureuisvc_jni.so
+vendor/lib64/libsecureui_svcsock.so
+vendor/lib64/libsi.so
 vendor/lib64/libssd.so
+vendor/lib64/libStDrvInt.so
+vendor/lib64/libtzdrmgenprov.so
 
 # Fingerprint blobs for aqua
 lib/lib_fpc_tac_shared.so
@@ -674,6 +702,7 @@ vendor/lib64/hw/keystore.msm8992.so
 vendor/lib/hw/sound_trigger.primary.msm8992.so
 
 # Media
+vendor/bin/audioflacapp
 vendor/lib/libFlacSwDec.so
 vendor/lib/libHevcSwEncoder.so
 vendor/lib/libI420colorconvert.so
@@ -706,14 +735,12 @@ vendor/lib/liblistensoundmodel2.so
 vendor/lib/libmmipl.so
 vendor/lib/librs.rnr_downscale.so
 vendor/lib/librs.rnr_process.so
-vendor/lib/libtzdrmgenprov.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib64/libCommandSvc.so
 vendor/lib64/libfrsdk.so
 vendor/lib64/libhubconnection.so
 vendor/lib64/libkmcrypto.so
 vendor/lib64/liblistensoundmodel2.so
-vendor/lib64/libtzdrmgenprov.so
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 
 # Network
@@ -921,10 +948,12 @@ lib64/hw/activity_recognition.msm8994.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib/libsensors.lsm6db0.so
+vendor/lib/libsubsystem_control.so
 vendor/lib/sensors.ssc.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensors.lsm6db0.so
+vendor/lib64/libsubsystem_control.so
 vendor/lib64/sensors.ssc.so
 
 # Signed Venus (media) firmware
