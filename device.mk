@@ -259,6 +259,10 @@ PRODUCT_PACKAGES += \
     camera.msm8992 \
     Snap
 
+# Libshims
+PRODUCT_PACKAGES += \
+    libshims_ims
+
 # Snap Config
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.cpp.duplication=false
