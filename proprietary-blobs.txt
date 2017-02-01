@@ -192,6 +192,7 @@ vendor/lib64/libmmcamera_ov5645.so
 vendor/lib64/libmmcamera2_q3a_core.so
 vendor/lib64/libmmcamera2_sensor_debug.so
 vendor/lib64/libmmcamera2_stats_algorithm.so
+vendor/lib64/libmorpho_panorama_gp.so
 
 # Camera actuators
 vendor/lib/libactuator_ad5823.so
@@ -702,11 +703,17 @@ vendor/lib64/hw/keystore.msm8992.so
 vendor/lib/hw/sound_trigger.primary.msm8992.so
 
 # Media
+lib/libstagefright_soft_ffmpegadec.so
+lib/libstagefright_soft_flacdec.so
+lib64/libstagefright_soft_ffmpegadec.so
+lib64/libstagefright_soft_flacdec.so
 vendor/bin/audioflacapp
+-vendor/lib/libavenhancements.so
 vendor/lib/libFileMux.so
 vendor/lib/libFlacSwDec.so
 vendor/lib/libHevcSwEncoder.so
 vendor/lib/libI420colorconvert.so
+-vendor/lib/libmmparser_lite.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAmrwbplusDec.so
 vendor/lib/libOmxEvrcDec.so
@@ -715,10 +722,12 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
+-vendor/lib64/libavenhancements.so
 vendor/lib64/libFileMux.so
 vendor/lib64/libFlacSwDec.so
 vendor/lib64/libHevcSwEncoder.so
 vendor/lib64/libI420colorconvert.so
+-vendor/lib64/libmmparser_lite.so
 vendor/lib64/libOmxAacDec.so
 vendor/lib64/libOmxAmrwbplusDec.so
 vendor/lib64/libOmxMux.so
@@ -852,6 +861,7 @@ bin/rfs_access
 bin/rmt_storage
 bin/subsystem_ramdump
 bin/tftp_server
+bin/wdsdaemon
 etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/data/qmi_config.xml
