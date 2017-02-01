@@ -703,20 +703,25 @@ vendor/lib/hw/sound_trigger.primary.msm8992.so
 
 # Media
 vendor/bin/audioflacapp
+vendor/lib/libFileMux.so
 vendor/lib/libFlacSwDec.so
 vendor/lib/libHevcSwEncoder.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAmrwbplusDec.so
 vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxMux.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
+vendor/lib64/libFileMux.so
+vendor/lib64/libFlacSwDec.so
 vendor/lib64/libHevcSwEncoder.so
 vendor/lib64/libI420colorconvert.so
 vendor/lib64/libOmxAacDec.so
 vendor/lib64/libOmxAmrwbplusDec.so
+vendor/lib64/libOmxMux.so
 vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libmm-color-convertor.so
 vendor/lib64/libmmosal.so
@@ -870,6 +875,8 @@ vendor/lib/libqcmaputils.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qc-radioconfig.so
 vendor/lib/libril-qcril-hook-oem.so
+vendor/lib/libsubsystem_control.so
+vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib64/libconfigdb.so
 vendor/lib64/liblqe.so
@@ -879,6 +886,7 @@ vendor/lib64/libqcmaputils.so
 vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
+vendor/lib64/libsubsystem_control.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libxml.so
 vendor/qcril.db
@@ -948,12 +956,10 @@ lib64/hw/activity_recognition.msm8994.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib/libsensors.lsm6db0.so
-vendor/lib/libsubsystem_control.so
 vendor/lib/sensors.ssc.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensors.lsm6db0.so
-vendor/lib64/libsubsystem_control.so
 vendor/lib64/sensors.ssc.so
 
 # Signed Venus (media) firmware
