@@ -49,7 +49,7 @@ on property:sys.boot_completed=1
     # write /proc/touchscreen/edge_touch_mode 2
 
 on init
-    export LD_SHIM_LIBS /system/vendor/lib64/lib-imsvt.so|libshims_ims.so
+    export LD_SHIM_LIBS /system/vendor/lib64/lib-imsvt.so|libshims_ims.so:/system/bin/wfdservice|libshims_ims.so
 
     # Load persistent dm-verity state
     verity_load_state
