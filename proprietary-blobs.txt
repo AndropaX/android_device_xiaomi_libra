@@ -747,8 +747,6 @@ bin/port-bridge
 bin/qmakernote-xtract
 lib/hw/local_time.default.so
 vendor/lib/hw/tof.vl6180.so
-vendor/lib/libadm.so
-vendor/lib/libadpcmdec.so
 vendor/lib/libfrsdk.so
 vendor/lib/libhubconnection.so
 vendor/lib/libkmcrypto.so
