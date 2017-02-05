@@ -250,6 +250,6 @@ ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
 MALLOC_SVELTE := true
 
 # Use Snapdragon LLVM, if available
-TARGET_USE_SDCLANG := true
+#TARGET_USE_SDCLANG := true
 
 -include vendor/xiaomi/libra/BoardConfigVendor.mk
