@@ -108,6 +108,9 @@ TARGET_RIL_VARIANT := caf
 BOARD_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_11
 BOARD_GLOBAL_CPPFLAGS += -DUSE_RIL_VERSION_11
 
+# Added to indicate that protobuf-c is supported in this build
+PROTOBUF_SUPPORTED := true
+
 # WiFi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_HAS_QCOM_WLAN_SDK          := true
@@ -153,6 +156,7 @@ TARGET_USES_C2D_COMPOSITION := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 MAX_VIRTUAL_DISPLAY_DIMENSION := 2048
 BOARD_USES_OPENSSL_SYMBOLS := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Remove opaque check in preparing dirty region
 BOARD_GLOBAL_CFLAGS += -DHWUI_OPENGL_QUIRK
@@ -237,11 +241,7 @@ BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += device/xiaomi/libra/cmhw
 
 # Jack & Jill
-#ANDROID_COMPILE_WITH_JACK := false
 ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
-
-# Configure jemalloc
-MALLOC_SVELTE := true
 
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
