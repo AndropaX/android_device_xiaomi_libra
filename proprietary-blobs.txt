@@ -35,6 +35,7 @@ vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 
 # Audio
+etc/drc/drc_cfg_5.1
 etc/drc/drc_cfg_AZ.txt
 vendor/etc/audio_output_policy.conf
 vendor/lib/soundfx/libqcbassboost.so
