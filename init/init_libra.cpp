@@ -123,15 +123,15 @@ static void init_target_properties()
         property_set("ro.build.product", "libra");
         property_set("ro.product.model", "Mi-4c");
         property_set("ro.product.device", "libra");
-        property_set("ro.build.description", "libra-user 5.1.1 LMY47V V8.1.3.0.LXKCNDI release-keys");
-        property_set("ro.build.fingerprint", "Xiaomi/libra/libra:5.1.1/LMY47V/V8.1.3.0.LXKCNDI:user/release-keys");
+        property_set("ro.build.description", "libra-user 7.0 NRD90M 7.2.9 release-keys");
+        property_set("ro.build.fingerprint", "Xiaomi/libra/libra:7.0/NRD90M/7.2.9:user/release-keys");
         property_set("service.fingerprint.enable", "0");
     } else {
         property_set("ro.build.product", "aqua");
         property_set("ro.product.model", "Mi-4s");
         property_set("ro.product.device", "aqua");
-        property_set("ro.build.description", "aqua-user 5.1.1 LMY47V V8.1.4.0.LAJCNDI release-keys");
-        property_set("ro.build.fingerprint", "Xiaomi/aqua/aqua:5.1.1/LMY47V/V8.1.4.0.LAJCNDI:user/release-keys");
+        property_set("ro.build.description", "aqua-user 7.0 NRD90M 7.2.9 release-keys");
+        property_set("ro.build.fingerprint", "Xiaomi/aqua/aqua:7.0/NRD90M/7.2.9:user/release-keys");
     }
 }
 
