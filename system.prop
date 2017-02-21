@@ -65,6 +65,10 @@ ro.qcom.ad.sensortype=2
 # bit0-ColorPrefer bit1-EyeCare bit2-AD bit3-CE bit4-CABC bit5-SRGB
 ro.sys.display.support=23
 
+# Fingerprint
+ro.hardware.fingerprint=fpc
+sys.fpc.tu.disabled=0
+
 # GPS
 persist.gps.qc_nlp_in_use=1
 persist.loc.nlp_name=com.qualcomm.location

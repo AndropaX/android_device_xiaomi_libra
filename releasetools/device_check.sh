@@ -21,9 +21,11 @@ HW_ID=`cat /sys/bootinfo/hw_version`
 if [ $HW_ID == 0x230 ]; then
     # Remove fingerprint
     rm -rf /system/lib/lib_fpc_tac_shared.so
-    rm -rf /system/lib/hw/fingerprint.libra.so
+    rm -rf /system/lib/libcom_fingerprints_service.so
+    rm -rf /system/lib/hw/fingerprint.fpc.so
     rm -rf /system/lib64/lib_fpc_tac_shared.so
-    rm -rf /system/lib64/hw/fingerprint.libra.so
+    rm -rf /system/lib64/libcom_fingerprints_service.so
+    rm -rf /system/lib64/hw/fingerprint.fpc.so
     rm -rf /system/etc/permissions/android.hardware.fingerprint.xml
     rm -rf /system/bin/fingerprintd
 else

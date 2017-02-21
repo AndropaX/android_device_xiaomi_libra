@@ -60,7 +60,8 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/libra/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     device/xiaomi/libra/keylayout/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
     device/xiaomi/libra/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl \
-    device/xiaomi/libra/keylayout/synaptics_dsx_edge.kl:system/usr/keylayout/synaptics_dsx_edge.kl
+    device/xiaomi/libra/keylayout/synaptics_dsx_edge.kl:system/usr/keylayout/synaptics_dsx_edge.kl \
+    device/xiaomi/libra/keylayout/uinput-fpc.kl:system/usr/keylayout/uinput-fpc.kl
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
