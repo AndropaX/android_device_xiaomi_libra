@@ -357,7 +357,12 @@
          This needs to match the constants in
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
-    <integer name="config_doubleTapOnHomeBehavior">0</integer>
+    <!--<integer name="config_doubleTapOnHomeBehavior">0</integer>--> <!-- TODO: Duplicated on line 353 -->
+    
+    <!-- TODO: Enables HW HOME as input for Now On Tap (or Search on screen)
+         This flag must be set to allow the use of Home hardware button for assistant on screen search.
+         Without, only software navigation bar enables Now on Tap behaviour -->
+    <bool name="config_hwKeysPref">true</bool>
 
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
