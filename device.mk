@@ -257,7 +257,6 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8992 \
     Snap
 
 # Libshims

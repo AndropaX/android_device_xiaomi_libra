@@ -98,7 +98,7 @@ etc/android_model_facea.dat
 etc/android_model_faceg.dat
 etc/people_gender.dat
 etc/watermark_font_2300_3199.dat
-lib/hw/camera.vendor.msm8992.so
+lib/hw/camera.msm8992.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmorpho_memory_allocator.so
