@@ -641,10 +641,8 @@ vendor/lib64/libStDrvInt.so
 vendor/lib64/libtzdrmgenprov.so
 
 # Fingerprint blobs for aqua
-lib/lib_fpc_tac_shared.so
 lib/libcom_fingerprints_service.so
 lib/hw/fingerprint.fpc.so
-lib64/lib_fpc_tac_shared.so
 lib64/libcom_fingerprints_service.so
 lib64/hw/fingerprint.fpc.so
 
