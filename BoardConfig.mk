@@ -35,12 +35,12 @@ TARGET_NO_BOOTLOADER := true
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_DTBTOOL_ARGS := -2
-TARGET_KERNEL_SOURCE := kernel/xiaomi/libra
-TARGET_KERNEL_CONFIG := libra_user_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8992
+TARGET_KERNEL_CONFIG := resurrection_libra_defconfig
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9-kernel/bin
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9-kernel/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
@@ -56,12 +56,10 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
-# Kernel modules in rootfs
-NEED_KERNEL_MODULE_ROOT := true
 BOARD_CUSTOM_BOOTIMG_MK := device/xiaomi/libra/mkbootimg.mk
 
 # Off charging mode
-WITH_CM_CHARGER := false
+#WITH_CM_CHARGER := false
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_libra
@@ -106,7 +104,8 @@ BOARD_USES_QC_TIME_SERVICES := true
 # Ril
 FEATURE_QCRIL_UIM_SAP_SERVER_MODE := true
 TARGET_RIL_VARIANT := caf
-BOARD_GLOBAL_CFLAGS+= -DUSE_RIL_VERSION_11
+BOARD_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_11
+BOARD_GLOBAL_CPPFLAGS += -DUSE_RIL_VERSION_11
 
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
@@ -117,8 +116,6 @@ BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
-WIFI_DRIVER_MODULE_PATH := "/lib/modules/wlan.ko"
-WIFI_DRIVER_MODULE_NAME := "wlan"
 
 BOARD_USES_SECURE_SERVICES := true
 
@@ -184,7 +181,7 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.libra
 
 TARGET_RECOVERY_FSTAB = device/xiaomi/libra/fstab.libra
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/xiaomi/libra
+TARGET_RELEASETOOLS_EXTENSIONS := device/xiaomi/libra/releasetools
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_HAL_STATIC_LIBRARIES += libhealthd.qcom
@@ -219,6 +216,7 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 TARGET_PER_MGR_ENABLED := true
 
 # Power
+TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/xiaomi/libra/power/power_ext.c
 TARGET_POWERHAL_VARIANT := qcom
 
 # Sensors
@@ -240,5 +238,8 @@ ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
 
 # Configure jemalloc
 MALLOC_SVELTE := true
+
+# Use Snapdragon LLVM, if available
+TARGET_USE_SDCLANG := true
 
 -include vendor/xiaomi/libra/BoardConfigVendor.mk

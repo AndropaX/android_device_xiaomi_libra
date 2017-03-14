@@ -131,12 +131,20 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/init.libra.sh:system/bin/init.libra.sh
 
+PRODUCT_COPY_FILES += \
+    device/xiaomi/libra/releasetools/device_check.sh:install/bin/device_check.sh
+	
+
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
+
+# First api level, device has been commercially launched
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.first_api_level=22
 
 # Gello
 PRODUCT_PACKAGES += \
@@ -188,7 +196,14 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     audio_policy.msm8992 \
-    tinymix
+    audio_amplifier.msm8992
+
+# some extra tools
+PRODUCT_PACKAGES += \
+    tinycap \
+    tinymix \
+    tinypcminfo \
+    tinyplay
 
 # Audio effects
 PRODUCT_PACKAGES += \
@@ -220,6 +235,11 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf \
     xiaomi_hwaddrs
+
+# IPA Manager
+PRODUCT_PACKAGES += \
+    ipacm \
+    IPACM_cfg.xml
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -383,6 +403,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # for perfd
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.am.reschedule_service=true \
     sys.io.scheduler=sio \
     ro.min_freq_0=302400 \
     ro.min_freq_4=302400
@@ -529,3 +550,4 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, hardware/qcom/msm8994/msm8992.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
+$(call inherit-product-if-exists, vendor/andropax/extras.mk)
