@@ -7,7 +7,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
-TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(DEVICE_PATH)/power/power_ext.c
 
 # Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
