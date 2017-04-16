@@ -30,6 +30,6 @@ def AddTrustZoneAssertion(info):
   if m:
     versions = m.group(1).split('|')
     if len(versions) and '*' not in versions:
-      cmd = 'assert(qcom.verify_trustzone(' + ','.join(['"%s"' % tz for tz in versions]) + ') == "1");'
+      cmd = 'assert(qcom.verify_trustzone(' + ','.join(['"%s"' % tz for tz in versions]) + ') == "1" || abort("Your firmware is incompatible with this ROM version. Please update it to newest available version"););'
       info.script.AppendExtra(cmd)
   return
