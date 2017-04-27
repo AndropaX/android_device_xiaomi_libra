@@ -136,7 +136,6 @@ bluetooth.enable_timeout_ms=12000
 #Simulate sdcard on /data/media
 #
 persist.fuse_sdcard=true
-ro.sys.sdcardfs=true
 
 #system prop for Bluetooth SOC type
 qcom.bluetooth.soc=rome
