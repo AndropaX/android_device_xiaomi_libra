@@ -26,8 +26,12 @@
  */
 
 #include <sys/sysinfo.h>
+#include <android-base/properties.h>
 
 #include "property_service.h"
+
+namespace android {
+namespace init {
 
 char const *heapstartsize;
 char const *heapgrowthlimit;
@@ -66,3 +70,6 @@ void vendor_load_properties()
     property_set("dalvik.vm.heapminfree", heapminfree);
     property_set("dalvik.vm.heapmaxfree", "8m");
 }
+
+}  // namespace init
+}  // namespace android

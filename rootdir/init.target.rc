@@ -49,12 +49,6 @@ on fs
     mkdir /persist/data 0700 system system
     mkdir /persist/wlan_bt 0700 system system
 
-    wait /dev/block/bootdevice/by-name/modem
-    mount vfat /dev/block/bootdevice/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0
-
-    wait /dev/block/bootdevice/by-name/bluetooth
-    mount vfat /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0
-
 on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -63,6 +57,7 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /data/misc/dts 0770 media audio
     mkdir /data/thermal 0771 system system
+    rm /data/logcat.txt
 
 on boot
     symlink /dev/block/platform/soc.0 /dev/block/bootdevice
@@ -97,6 +92,11 @@ on boot
     chown system system /dev/cpuset/top-app/boost
     chown system system /dev/cpuset/top-app/boost/tasks
     chmod 0664 /dev/cpuset/top-app/boost/tasks
+
+service logcat_debug /system/bin/logcat -b all -f /data/logcat.txt -v threadtime
+    class main
+    user root
+    group system
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
@@ -306,8 +306,7 @@ service mlipayservice /system/bin/mlipayd
     class late_start
 
 service readmac /system/bin/readmac
-    class late_start
+    class core
     user system
     group radio qcom_diag log net_raw wifi
     oneshot
-    disabled
