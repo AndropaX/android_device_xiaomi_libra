@@ -32,6 +32,9 @@ $(call inherit-product, vendor/xiaomi/libra/libra-vendor.mk)
 # Call the HWUI overrides
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
+# Experiments
+$(call inherit-product-if-exists, vendor/andropax/exp.mk)
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
