@@ -15,12 +15,26 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/xiaomi/libra/full_libra.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_libra
-BOARD_VENDOR := Xiaomi
+# Inherit device configuration
+$(call inherit-product, device/xiaomi/libra/device.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=libra
+PRODUCT_NAME := lineage_libra
+PRODUCT_DEVICE := libra
+
+BOARD_VENDOR := Xiaomi
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MODEL := Mi-4c
+PRODUCT_MANUFACTURER := Xiaomi
+
+# Build fingerprint
+PRODUCT_BUILD_PROP_OVERRIDES += \
+        PRODUCT_NAME="libra" \
+	BUILD_FINGERPRINT="Xiaomi/libra/libra:7.0/NRD90M/V8.2.3.0.NXKCNEC:user/release-keys" \
+	PRIVATE_BUILD_DESC="libra-user 7.0 NRD90M V8.2.3.0.NXKCNEC release-keys"
