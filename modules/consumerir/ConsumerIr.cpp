@@ -52,8 +52,9 @@ static int openLircDev() {
 ConsumerIr::ConsumerIr() {}
 
 Return<bool> ConsumerIr::transmit(int32_t carrierFreq, const hidl_vec<int32_t>& pattern) {
+    size_t entries = pattern.size();
     int lircFd;
-    int rc;
+    int rc = 0;
 
     lircFd = openLircDev();
     if (lircFd < 0) {
@@ -72,11 +73,11 @@ Return<bool> ConsumerIr::transmit(int32_t carrierFreq, const hidl_vec<int32_t>& 
         goto out_close;
     }
 
-    if (pattern.size() & 1) {
-        rc = write(lircFd, pattern.data(), sizeof(*pattern.data())*pattern.size());
+    if (entries & 1) {
+        rc = write(lircFd, pattern.data(), sizeof(int32_t) * entries);
     } else {
-        rc = write(lircFd, pattern.data(), sizeof(*pattern.data())*(pattern.size() - 1));
-        usleep(pattern.data()[pattern.size() - 1]);
+        rc = write(lircFd, pattern.data(), sizeof(int32_t) * (entries - 1));
+        usleep(pattern[entries - 1]);
     }
 
     if (rc < 0) {
@@ -84,12 +85,10 @@ Return<bool> ConsumerIr::transmit(int32_t carrierFreq, const hidl_vec<int32_t>& 
         goto out_close;
     }
 
-    rc = 0;
-
 out_close:
     close(lircFd);
 
-    return rc == 0;
+    return !rc;
 }
 
 Return<void> ConsumerIr::getCarrierFreqs(getCarrierFreqs_cb _hidl_cb) {
