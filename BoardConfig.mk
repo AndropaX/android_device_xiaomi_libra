@@ -69,12 +69,10 @@ TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# CM Hardware
+# Lineage Hardware
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchscreen/double_tap_enable"
-# BOARD_USES_CYANOGEN_HARDWARE := true
-# BOARD_HARDWARE_CLASS += \
-#     hardware/cyanogen/cmhw \
-#     $(DEVICE_PATH)/cmhw
+BOARD_HARDWARE_CLASS += \
+     $(DEVICE_PATH)/lineagehw
 
 # CNE
 BOARD_USES_QCNE := true
